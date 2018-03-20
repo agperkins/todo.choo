@@ -13,13 +13,7 @@ function view (state, emit) {
         <section class="fl mw6 w-50-m w-third-l pa3">
           <h2>1.</h2>
           <p>
-            Welcome to your new Choo application.
-            We're very happy you've made it this far.
-          </p>
-
-          <p>
-            You're now in control of your own Choo app. The moment you decide to
-            deploy it, it'll work offline and on any device.
+            Working on a todo list. 
           </p>
 
           <br>
@@ -29,28 +23,8 @@ function view (state, emit) {
           <h2>2.</h2>
 
           <p>
-            We've outfitted your project with a small selection of commands to
-            help you achieve results faster:
+            TODO
           </p>
-
-          <ul>
-            <li class="mb3">
-              <strong>npm start</strong><br>
-              start your project for local development.
-            </li>
-            <li class="mb3">
-              <strong>npm run build</strong><br>
-              compile your project for production.
-            </li>
-            <li class="mb3">
-              <strong>npm run inspect</strong><br>
-              visualize your project's dependencies.
-            </li>
-            <li class="mb3">
-              <strong>npm run create</strong><br>
-              scaffold a new file.
-            </li>
-          </ul>
 
           <br>
         </section>
@@ -59,30 +33,10 @@ function view (state, emit) {
           <h2>3.</h2>
 
           <p>
-            Your project also comes with a few directories. These names have
-            special meanings for the build tool, so it's good to know what they
-            do.
+           !Que puede hacer todo!
           </p>
 
-          <ul>
-            <li class="mb3">
-              <strong>assets/</strong><br>
-              Static files that can be served up, such as images and fonts.
-            </li>
-            <li class="mb3">
-              <strong>components/</strong><br>
-              Reusable fragments that can be composed into views.
-            </li>
-            <li class="mb3">
-              <strong>stores/</strong><br>
-              Pieces of logic that are shared by multiple components.
-            </li>
-            <li class="mb3">
-              <strong>views/</strong><br>
-              Combinations of components that are mapped to routes.
-            </li>
-          </ul>
-
+          
           <br>
         </section>
 
