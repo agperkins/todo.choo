@@ -33,6 +33,7 @@ function view (state, emit) {
         <ul id="myUL">
         <li>Run/li>
         <li>Code</li>
+        <li>Figure out how to make "add" a BUTTON THAT ADDS STUFF TO THE LIST</li>
         <li>Walk dogs</li>
       </ul>
           <br>
