@@ -1,9 +1,18 @@
 var html = require('choo/html')
+var css = require('sheetify')
 
 var TITLE = 'todo.choo - main'
 
 module.exports = view
 
+css`
+  .buttonWrap {
+    float: left;
+  }
+  .sectionWidth {
+    width: 500px;
+  }
+`
 function view (state, emit) {
   if (state.title !== TITLE) emit(state.events.DOMTITLECHANGE, TITLE)
 
@@ -27,37 +36,43 @@ function view (state, emit) {
             TODO
           </p>
           <input type="text" id="myInput" placeholder="Title...">
-          <span onclick="newElement()" class="addBtn">Add</span>
+          <button onclick="newElement()" class="addBtn">Add</button>
         </div>
 
         <ul id="myUL">
         <li>Run/li>
         <li>Code</li>
-        <li>Figure out how to make "add" a BUTTON THAT ADDS STUFF TO THE LIST</li>
+        <li>Figure out how to make "add" a BUTTON THAT ADDS STUFF</li>
         <li>Walk dogs</li>
       </ul>
           <br>
         </section>
 
-        <section class="fl mw6 w-50-m w-third-l pa3">
-          <h2>3.</h2>
-
-          <p>
-           !Que puede hacer todo!
-          </p>
-
-          
-          <br>
-        </section>
-
-        <section class="fl mw6 w-50-m w-third-l pa3">
+        <section class="fl mw6 w-third-l pa3 sectionWidth">
           <h2>4.</h2>
           <p>Number of clicks stored: ${state.totalClicks}</p>
+          <p>${state.talkOfTheTown}</p>
 
-          <button class="dim ph3 ba bw1 pv2 b--black pointer bg-white"
-            onclick=${handleClick}>
-            Emit a click event
-          </button>
+          <div class="buttonWrap">
+            <button
+              onclick=${handleSubtract}>
+              down
+            </button>
+
+            <button
+              onclick=${handleReset}>
+              reset
+            </button>
+
+            <button
+              onclick=${handleClick}>
+              up
+            </button>
+            <button
+              onclick=${talk}>
+              Sentence of the day
+            </button>
+          </div>
 
           <br><br>
         </section>
@@ -70,8 +85,16 @@ function view (state, emit) {
       </main>
     </body>
   `
-
+  function handleReset () {
+    emit('clicks:reset')
+  }
   function handleClick () {
     emit('clicks:add', 1)
+  }
+  function handleSubtract () {
+    emit('clicks:subtract', 1)
+  }
+  function talk () {
+    emit('mouth:talk', 'This is different')
   }
 }
