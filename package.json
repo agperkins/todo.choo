@@ -5,6 +5,7 @@
   "scripts": {
     "build": "bankai build index.js",
     "create": "choo-scaffold",
+    "format": "standard --fix",
     "inspect": "bankai inspect index.js",
     "start": "bankai start index.js",
     "test": "standard && npm run test-deps",
@@ -22,6 +23,7 @@
     "choo-devtools": "^2.5.0",
     "choo-scaffold": "^1.1.2",
     "dependency-check": "^3.1.0",
+    "prettier": "^1.11.1",
     "standard": "^11.0.1"
   }
 }
