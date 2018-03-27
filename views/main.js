@@ -31,14 +31,14 @@ function view (state, emit) {
          <section class="fl mw6 w-50-m w-third-l pa3">
         <div id="myDIV" class="header">
           <h2>2.</h2>
-
+          <p>${state.todoItems}</p>
           <p>
             TODO
           </p>
-          <input type="text" id="myInput" placeholder="Title...">
-          <button onclick="newElement()" class="addBtn">Add</button>
-        </div>
+          <input onchange=${todoAdd} type="text" id="myInput" placeholder="Title...">
 
+        </div>
+        <p><code><pre>${console.log(state.todoItems)}</pre></code></p>
         <ul id="myUL">
         <li>Run/li>
         <li>Code</li>
@@ -96,5 +96,8 @@ function view (state, emit) {
   }
   function talk () {
     emit('mouth:talk', 'This is different')
+  }
+  function todoAdd (e) {
+    emit('todo:Add', e.target.value)
   }
 }
