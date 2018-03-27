@@ -3,6 +3,7 @@ module.exports = store
 function store (state, emitter) {
   state.totalClicks = 0
   state.talkOfTheTown = ''
+  state.todoItems = []
 
   emitter.on('DOMContentLoaded', function () {
     emitter.on('clicks:reset', function () {
@@ -19,6 +20,10 @@ function store (state, emitter) {
     })
     emitter.on('mouth:talk', function (text) {
       state.talkOfTheTown = text
+      emitter.emit(state.events.RENDER)
+    })
+    emitter.on('todo:Add', function (text) {
+      state.todoItems += text
       emitter.emit(state.events.RENDER)
     })
   })
