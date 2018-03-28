@@ -6,11 +6,12 @@ var TITLE = 'todo.choo - main'
 module.exports = view
 
 css`
-  .avenir { 
-    font-family: 'avenir next', avenir, sans-serif;
-  }
-  .bg-light-red { 
-    background-color: var(--light-red); 
+  .button {
+    border: 1px solid black;
+    background: none;
+    margin: 5px;
+    padding: 10px 15px;
+    border-radius: 20px;
   }
   .buttonWrap {
     float: left;
@@ -23,16 +24,16 @@ function view (state, emit) {
   if (state.title !== TITLE) emit(state.events.DOMTITLECHANGE, TITLE)
 
   return html`
-    <body class="code lh-copy">
+    <body class="avenir bg-washed-red lh-copy">
       <main class="pa3 cf center">
          <section class="fl mw6 w-50-m w-third-l pa3">
-        <div id="myDIV" class="header">
-        <h1 style="font-family:avenir;" class="f-headline lh-solid">1.</h1>
+        <div>
+        <h1 class="f-headline lh-solid">1.</h1>
           <p>${state.todoItems}</p>
-          <p style="font-family:avenir;">
+          <p>
             todo
           </p>
-          <input onchange=${todoAdd} type="text" id="myInput" style="font-family:avenir" placeholder="Whatcha gotta do?...">
+          <input onchange=${todoAdd} type="text" id="myInput" placeholder="Whatcha gotta do?...">
 
         </div>
         <p><code><pre>${console.log(state.todoItems)}</pre></code></p>
@@ -41,26 +42,27 @@ function view (state, emit) {
         </section>
 
         <section class="fl mw6 w-third-l pa3 sectionWidth">
-        <h2 style="font-family:avenir;" class="f-headline lh-solid">2.</h2>
-          <p style="font-family:avenir;"> Number of clicks stored: ${state.totalClicks}</p>
+        <h2 class="f-headline lh-solid">2.</h2>
+          <p> Number of clicks stored: ${state.totalClicks}</p>
           <p>${state.talkOfTheTown}</p>
 
-          <div class="buttonWrap" style="font-family:avenir;">
-            <button style="font-family:avenir;"
+          <div class="buttonWrap">
+            <button class="button"
               onclick=${handleSubtract}>
               down
             </button>
 
-            <button style="font-family:avenir;"
+            <button class="button"
               onclick=${handleReset}>
               reset
             </button>
-            <button style="font-family:avenir;"
+
+            <button class="button"
               onclick=${handleClick}>
               up
             </button>
 
-            <button style="font-family:avenir;"
+            <button class="button"
               onclick=${talk}>
               sentence of the day
             </button>
