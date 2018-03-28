@@ -6,6 +6,14 @@ var TITLE = 'todo.choo - main'
 module.exports = view
 
 css`
+  .inputbox {
+    border-radius: 20px;
+    height: 44px;
+  }
+  body {
+    font-size: 1.2em;
+    word-wrap: break-word;
+  }
   .button {
     border: 1px solid black;
     background: none;
@@ -20,29 +28,25 @@ css`
     width: 500px;
   }
 `
+
 function view (state, emit) {
   if (state.title !== TITLE) emit(state.events.DOMTITLECHANGE, TITLE)
 
   return html`
     <body class="avenir bg-washed-red lh-copy">
       <main class="pa3 cf center">
-         <section class="fl mw6 w-50-m w-third-l pa3">
-        <div>
-        <h1 class="f-headline lh-solid">1.</h1>
-          <p>${state.todoItems}</p>
-          <p>
-            todo
-          </p>
-          <input onchange=${todoAdd} type="text" id="myInput" placeholder="Whatcha gotta do?...">
-
-        </div>
-        <p><code><pre>${console.log(state.todoItems)}</pre></code></p>
-      
-          <br>
+      <h1>Classy, elegant todo list</h1>
+      <section class="pa3 fl mw6 w-50-m w-third-l pa3">
+        <h2 class="f-headline lh-solid">Todo</h2>
+          <input onchange=${todoAdd} type="text" id="myInput" class=inputbox placeholder="Whatcha gotta do?...">
+            <p>${Object.keys(state.todoItems).forEach(function (key) {
+    var value = state.todoItems[key]
+    console.log(value)
+  })}</p>
         </section>
 
         <section class="fl mw6 w-third-l pa3 sectionWidth">
-        <h2 class="f-headline lh-solid">2.</h2>
+        <h2 class="f-headline lh-solid">Clicky</h2>
           <p> Number of clicks stored: ${state.totalClicks}</p>
           <p>${state.talkOfTheTown}</p>
 
