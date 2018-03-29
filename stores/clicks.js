@@ -23,7 +23,7 @@ function store (state, emitter) {
       emitter.emit(state.events.RENDER)
     })
     emitter.on('todo:Add', function (text) {
-      state.todoItems += text
+      state.todoItems.push(text)
       emitter.emit(state.events.RENDER)
     })
   })
