@@ -72,13 +72,12 @@ function view (state, emit) {
             </button>
           </div>
 
-          <br><br>
         </section>
-
         <section class="fl mw6 w-50-m w-third-l pa3">
         </section>
 
         <section class="fl mw6 w-50-m w-third-l pa3">
+        <h2 class="f-headline lh-solid">Clicky 2</h2>
         </section>
       </main>
     </body>
