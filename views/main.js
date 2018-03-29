@@ -1,6 +1,5 @@
 var html = require('choo/html')
 var css = require('sheetify')
-var todoItems = require('./todo-items')
 
 var TITLE = 'todo.choo - main'
 
@@ -45,7 +44,9 @@ function view (state, emit) {
             <p>
               <ul>
                 ${items.map(function (todo) {
-    return todoItems(todo)
+    return html`
+                  <li onclick=${todoDelete}>${todo.name}</li>
+                  `
   })}
               </ul>
             </p>
@@ -103,5 +104,8 @@ function view (state, emit) {
   }
   function todoAdd (e) {
     emit('todo:Add', {name: e.target.value})
+  }
+  function todoDelete (e) {
+    emit('todo:delete', {name: e.target.value})
   }
 }
