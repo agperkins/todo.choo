@@ -1,5 +1,6 @@
 var html = require('choo/html')
 var css = require('sheetify')
+var todoItems = require('./todo-items')
 
 var TITLE = 'todo.choo - main'
 
@@ -32,6 +33,8 @@ css`
 function view (state, emit) {
   if (state.title !== TITLE) emit(state.events.DOMTITLECHANGE, TITLE)
 
+  var items = state.todoItems
+
   return html`
     <body class="avenir bg-washed-red lh-copy">
       <main class="pa3 cf center">
@@ -39,10 +42,13 @@ function view (state, emit) {
       <section class="pa3 fl mw6 w-50-m w-third-l pa3">
         <h2 class="f-headline lh-solid">Todo</h2>
           <input onchange=${todoAdd} type="text" id="myInput" class=inputbox placeholder="Whatcha gotta do?...">
-            <p>${Object.keys(state.todoItems).forEach(function (key) {
-    var value = state.todoItems[key]
-    console.log(value)
-  })}</p>
+            <p>
+              <ul>
+                ${items.map(function (todo) {
+    return todoItems(todo)
+  })}
+              </ul>
+            </p>
         </section>
 
         <section class="fl mw6 w-third-l pa3 sectionWidth">
@@ -96,6 +102,6 @@ function view (state, emit) {
     emit('mouth:talk', 'This is different')
   }
   function todoAdd (e) {
-    emit('todo:Add', e.target.value)
+    emit('todo:Add', {name: e.target.value})
   }
 }
