@@ -1,5 +1,6 @@
-var navigation = require('../components/navigation')
 var html = require('choo/html')
+
+var navigation = require('../components/navigation')
 
 var title = 'Alexandra'
 
