@@ -1,17 +1,17 @@
 var html = require('choo/html')
 var wrapper = require('../components/wrapper')
 
-module.exports = wrapper(view)
+module.exports = wrapper(clicky)
 
 var TITLE = 'Clicky'
 
-function view (state, emit) {
+function clicky (state, emit) {
   if (state.title !== TITLE) emit(state.events.DOMTITLECHANGE, TITLE)
   return html`
+    <body>
       <main class="sans-serif pa3">
         <h1>Clicky</h1>
         <p>Click around to see my progress</p>
-      </main>
       <section class="fl mw6 w-third-l pa3 sectionWidth">
         <h2 class="f-headline lh-solid">Clicky</h2>
           <p> Number of clicks stored: ${state.totalClicks}</p>
