@@ -10,11 +10,9 @@ function clicky (state, emit) {
   return html`
     <body>
       <main class="sans-serif pa3">
-        <h1>Clicky</h1>
-        <p>Click around to see my progress</p>
       <section class="fl mw6 w-third-l pa3 sectionWidth">
-        <h2 class="f-headline lh-solid">Clicky</h2>
-          <p> Number of clicks stored: ${state.totalClicks}</p>
+        <h1 class="f-headline lh-solid">Clicky</h1>
+          <p> Click it real good: ${state.totalClicks}</p>
           <p>${state.talkOfTheTown}</p>
 
           <div class="buttonWrap">
