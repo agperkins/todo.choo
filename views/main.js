@@ -1,9 +1,11 @@
 var html = require('choo/html')
 var css = require('sheetify')
+var wrapper = require('../components/wrapper')
+
 
 var TITLE = 'todo.choo - main'
 
-module.exports = (view)
+module.exports = wrapper(view)
 
 css`
   .inputbox {
