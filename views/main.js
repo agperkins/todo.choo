@@ -37,23 +37,20 @@ function view (state, emit) {
 
   return html`
     <body class="avenir bg-washed-red lh-copy">
-      <main class="pa3 cf center">
-      <h1>Classy, elegant todo list</h1>
-      <section class="pa3 fl mw6 w-50-m w-third-l pa3">
-        <h2 class="f-headline lh-solid">Todo</h2>
-          <input onchange=${todoAdd} type="text" id="myInput" class=inputbox placeholder="Whatcha gotta do?...">
+    <main class="pa3 cf center">
+      <h1>What do you need to do?</h1>
+          <input onchange=${todoAdd} type="text" id="myInput" class=inputbox placeholder="Add it here!...">
             <p>
               <ul>
-                ${items.map(function (todo) {
+                ${items.map(function (todo, index) {
     return html`
-                  <li onclick=${todoDelete}>${todo.name}</li>
+                  <li onclick=${todoDelete}>${todo.name} - ${index}</li>
                   `
   })}
               </ul>
             </p>
-      </section>
-    </main>
-  </body>
+      </main>
+    </body>
 `
   function todoAdd (e) {
     emit('todo:Add', {name: e.target.value})
