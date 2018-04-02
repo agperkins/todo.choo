@@ -26,8 +26,8 @@ function store (state, emitter) {
       state.todoItems.push(text)
       emitter.emit(state.events.RENDER)
     })
-    emitter.on('todo:delete', function (text) {
-      state.todoItems.pop()
+    emitter.on('todo:delete', function (index) {
+      state.todoItems.splice(0, 1)
       emitter.emit(state.events.RENDER)
     })
   })
