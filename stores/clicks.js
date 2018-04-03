@@ -27,7 +27,7 @@ function store (state, emitter) {
       emitter.emit(state.events.RENDER)
     })
     emitter.on('todo:delete', function (index) {
-      state.todoItems.splice(0, 1)
+      state.todoItems.splice(index, 1)
       emitter.emit(state.events.RENDER)
     })
   })
