@@ -34,6 +34,7 @@ function view (state, emit) {
   if (state.title !== TITLE) emit(state.events.DOMTITLECHANGE, TITLE)
 
   var items = state.todoItems
+  var index = 0
 
   return html`
     <body class="avenir bg-washed-red lh-copy">
@@ -44,7 +45,11 @@ function view (state, emit) {
               <ul>
                 ${items.map(function (todo, index) {
     return html`
-                  <li onclick=${todoDelete}>${todo.name} - ${index}</li>
+                  <li onclick=${function () {
+    return todoDelete(index)
+  }}>
+                  ${todo.name}
+                  </li>
                   `
   })}
               </ul>
@@ -55,7 +60,8 @@ function view (state, emit) {
   function todoAdd (e) {
     emit('todo:Add', {name: e.target.value})
   }
-  function todoDelete (e) {
-    emit('todo:delete', {name: e.target.value})
+  function todoDelete (index) {
+    emit('todo:delete', index)
+    console.log('Deleted index of ' + index)
   }
 }
