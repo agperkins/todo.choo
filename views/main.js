@@ -34,13 +34,13 @@ function view (state, emit) {
   if (state.title !== TITLE) emit(state.events.DOMTITLECHANGE, TITLE)
 
   var items = state.todoItems
-  var index = 0
 
   return html`
     <body class="avenir bg-washed-red lh-copy">
-    <main class="pa3 cf center">
-      <h1>What do you need to do?</h1>
+    <main aria-labelledby="todos-label" class="pa3 cf center">
+      <h1 id="todos-label">What do you need to do?</h1>
           <input onchange=${todoAdd} type="text" id="myInput" class=inputbox placeholder="Add it here!...">
+            ${todoInfo()}
             <p>
               <ul>
                 ${items.map(function (todo, index) {
@@ -57,6 +57,13 @@ function view (state, emit) {
       </main>
     </body>
 `
+  function todoInfo () {
+    if (state.todoItems.length === 0) {
+      return html`
+                 <p> There is nothing on your todo list. Add what you need to do in the field above, press enter, and presto! it will add to your list </p>
+      `
+    }
+  }
   function todoAdd (e) {
     emit('todo:Add', {name: e.target.value})
   }
