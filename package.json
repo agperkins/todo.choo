@@ -14,7 +14,8 @@
   "dependencies": {
     "choo": "^6.10.3",
     "choo-service-worker": "^2.4.0",
-    "npm": "^5.7.1",
+    "npm": "^5.8.0",
+    "pretty-checkbox": "^3.0.3",
     "sheetify": "^7.3.0",
     "tachyons": "^4.9.1"
   },
