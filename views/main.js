@@ -7,6 +7,16 @@ var TITLE = 'todo.choo - main'
 module.exports = wrapper(view)
 
 css`
+  .pointer {
+    cursor: pointer;
+  }
+  li:hover {
+    text-decoration: line-through;
+  }
+  .inline {
+    display: inline;
+    float:left;
+  }
   .inputbox {
     border-radius: 20px;
     height: 44px;
@@ -45,10 +55,10 @@ function view (state, emit) {
               <ul>
                 ${items.map(function (todo, index) {
     return html`
-                  <li onclick=${function () {
+                  <li class="pointer" onclick=${function () {
     return todoDelete(index)
   }}>
-                  ${todo.name}
+                  <div class="inline">${todo.name}</div><div class="inline">🗑</div>
                   </li>
                   `
   })}
@@ -60,7 +70,7 @@ function view (state, emit) {
   function todoInfo () {
     if (state.todoItems.length === 0) {
       return html`
-                 <p> There is nothing on your todo list. Add what you need to do in the field above, press enter, and presto! it will add to your list </p>
+                 <p> Your todo list is empty. Add what you need to do in the field above, press enter, and presto! it will add to your list </p>
       `
     }
   }
