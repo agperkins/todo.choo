@@ -58,12 +58,7 @@ function view (state, emit) {
                   <li class="pointer" onclick=${function () {
     return todoDelete(index)
   }}>
-  <div class="pretty p-default p-round p-fill">
-        <input type="checkbox" />
-        <div class="state p-primary">
-        </div>
-    </div>
-    <div class="inline">${todo.name}</div><div class="inline">🗑</div>
+    <div class="inline"><input type="checkbox" />  ${todo.name}</div><div class="inline">🗑</div>
                   </li>
                   `
   })}
