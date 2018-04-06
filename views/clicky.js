@@ -5,7 +5,7 @@ module.exports = wrapper(clicky)
 
 var TITLE = 'Clicky'
 
-function clicky (state, emit) {
+function clicky(state, emit) {
   if (state.title !== TITLE) emit(state.events.DOMTITLECHANGE, TITLE)
   return html`
     <body>
@@ -41,16 +41,16 @@ function clicky (state, emit) {
       </main>
     </body>
   `
-  function handleReset () {
+  function handleReset() {
     emit('clicks:reset')
   }
-  function handleClick () {
+  function handleClick() {
     emit('clicks:add', 1)
   }
-  function handleSubtract () {
+  function handleSubtract() {
     emit('clicks:subtract', 1)
   }
-  function talk () {
+  function talk() {
     emit('mouth:talk', 'This is different')
   }
 }
