@@ -7,6 +7,15 @@ var TITLE = 'todo.choo - main'
 module.exports = wrapper(view)
 
 css`
+  .xbox {
+    margin-left: .5em;
+  }
+  .checkbox {
+    margin-right: .5em;
+  }
+  input[type='checkbox']:checked + label {
+    text-decoration: line-through;
+  }
   .pointer {
     cursor: pointer;
   }
@@ -15,7 +24,6 @@ css`
   }
   .inline {
     display: inline;
-    float:left;
   }
   .inputbox {
     border-radius: 20px;
@@ -40,44 +48,50 @@ css`
   }
 `
 
-function view (state, emit) {
+function view(state, emit) {
   if (state.title !== TITLE) emit(state.events.DOMTITLECHANGE, TITLE)
 
   var items = state.todoItems
 
   return html`
     <body class="avenir bg-washed-red lh-copy">
-    <main aria-labelledby="todos-label" class="pa3 cf center">
-      <h1 id="todos-label">What do you need to do?</h1>
-          <input onchange=${todoAdd} type="text" id="myInput" class=inputbox placeholder="Add it here!...">
+      <main aria-labelledby="todos-label" class="pa3 cf center">
+        <h1 id="todos-label">What do you need to do?</h1>
+          <input onchange=${todoAdd} type="text" id="myInput" class=inputbox placeholder="Add it here!..." />
+          <p>
             ${todoInfo()}
-            <p>
-              <ul>
-                ${items.map(function (todo, index) {
-    return html`
-                  <li class="pointer" onclick=${function () {
-    return todoDelete(index)
-  }}>
-    <div class="inline"><input type="checkbox" />  ${todo.name}</div><div class="inline">🗑</div>
-                  </li>
-                  `
-  })}
-              </ul>
-            </p>
+              ${items.map(function(todo, index) {
+                return html`
+                <div>
+                  <input type="checkbox" class="pointer inline checkbox" /> <label for="checkbox">${
+                    todo.name
+                  }</label>                
+                  <div class="inline xbox pointer" onclick=${function() {
+                    return todoDelete(index)
+                  }}>✘</div>
+                </div>
+                `
+              })}
+          </p>
       </main>
     </body>
 `
-  function todoInfo () {
+
+  function todoInfo() {
     if (state.todoItems.length === 0) {
       return html`
-                 <p> Your todo list is empty. Add what you need to do in the field above, press enter, and presto! it will add to your list </p>
+        <p>Your todo list is empty. Add what you need to do in the field above, press enter, and presto! it will add to your list.</p>
       `
     }
   }
-  function todoAdd (e) {
-    emit('todo:Add', {name: e.target.value})
+
+  function todoAdd(e) {
+    emit('todo:Add', {
+      name: e.target.value,
+    })
   }
-  function todoDelete (index) {
+
+  function todoDelete(index) {
     emit('todo:delete', index)
     console.log('Deleted index of ' + index)
   }
