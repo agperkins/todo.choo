@@ -6,10 +6,10 @@ var title = 'Alexandra'
 
 module.exports = wrapper
 
-function wrapper (view) {
-  return function (state, emit) {
+function wrapper(view) {
+  return function(state, emit) {
     if (state.title !== title) emit(state.events.DOMTITLECHANGE, title)
-    state.page = state.page || { }
+    state.page = state.page || {}
     return html`
       <body class="avenir bg-washed-red lh-copy avenir lhcopy">
         ${navigation()}
