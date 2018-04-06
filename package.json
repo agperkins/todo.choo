@@ -5,10 +5,10 @@
   "scripts": {
     "build": "bankai build index.js",
     "create": "choo-scaffold",
-    "format": "standard --fix",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"**/*.js\"",
     "inspect": "bankai inspect index.js",
     "start": "bankai start index.js",
-    "test": "standard && npm run test-deps",
+    "test": "prettier --trailing-comma es5 --no-semi --single-quote --write \"**/*.js\" && npm run test-deps",
     "test-deps": "dependency-check . && dependency-check . --extra --no-dev -i tachyons"
   },
   "dependencies": {
@@ -24,7 +24,6 @@
     "choo-devtools": "^2.5.0",
     "choo-scaffold": "^1.1.2",
     "dependency-check": "^3.1.0",
-    "prettier": "^1.11.1",
-    "standard": "^11.0.1"
+    "prettier": "^1.11.1"
   }
 }
